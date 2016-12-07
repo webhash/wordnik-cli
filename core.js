@@ -4,7 +4,6 @@ var url = 'http://api.wordnik.com'
 var api_key = "a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5";
 var port = 80;
 var version = 4;
-var relationshipTypes = ['synonym', 'antonym'];
 
 
 function getData(URL, callback) {
@@ -19,30 +18,29 @@ function getData(URL, callback) {
 	})
 }
 
-exports.getWordDef = function (word) {
+exports.getWordDef = function (word, callback) {
 	var limit=10;
 	var includeRelated = false;
 	var wordDefURL = url + ':' + port + '/v' + version + '/word.json/' + word + '/definitions?limit=' + limit + '&includeRelated=' + includeRelated + '&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=' + api_key
-	getData(wordDefURL, function(response){console.log(response);});
+	getData(wordDefURL, function(response){return callback(response);});
 
 }
 
-exports.getWordRelation = function (word, relationshipType) {
+exports.getWordRelation = function (word, relationshipType, callback) {
 
 	var limitPerRelationshipType = 10;
 	var wordRelationURL = url + ':' + port + '/v' + version + '/word.json/' + word + '/relatedWords?useCanonical=false&relationshipTypes=' + relationshipType + '&limitPerRelationshipType=' + limitPerRelationshipType + '&api_key=' + api_key
-	getData(wordRelationURL, function(response){console.log(response);});
+	getData(wordRelationURL, function(response){return callback(response);});
 }
 	
-exports.getWordExample = function (word) {
+exports.getWordExample = function (word, callback) {
 	var limit = 5;
 	var wordExampleURL = url + ':' + port + '/v' + version + '/word.json/' + word + '/examples?includeDuplicates=false&useCanonical=false&skip=0&limit=' + limit + '&api_key=' + api_key
-	getData(wordExampleURL, function(response){console.log(response);});
+	getData(wordExampleURL, function(response){return callback(response);});
 }
 
-exports.getWordofDay = function () {
+exports.getWordofDay = function (callback) {
 	var currentdate = new Date().toISOString().split(/T/)[0];
 	var wordOfTheDayURL =  url + ':' + port + '/v' + version + '/words.json/wordOfTheDay?date=' + currentdate + '&api_key=' + api_key
-	var data = getData(wordOfTheDayURL);
-	getData(wordOfTheDayURL, function(response){console.log(response);});
+	getData(wordOfTheDayURL, function(response){return callback(response);});
 }

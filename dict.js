@@ -1,5 +1,7 @@
 
 var program = require('commander');
+var interface = require('./interface');
+var interface_wod = require('./interface_wod');
 
 program
 	.usage('[Options]')
@@ -15,28 +17,51 @@ program
 // convert words to lower case before sending them to core
 
 if(program.rawArgs.length==2) {
-	console.log("no op");	
+// word of the day
+	interface_wod.getWordofTheDay();
+	
 } else if (program.rawArgs.length ==3) {
-	console.log("word");	
-	console.log(program.args);
+	var word = 	program.args[0].toLowerCase();
+	console.log(word)
+	interface.getDefinition(word);
+	interface.getSynonyms(word);
+	interface.getAntonyms(word);
+	interface.getExamples(word);	
+
 } else if(program.def){
-	console.log("def");	
-	console.log(program.def);
+	var word = 	program.def.toLowerCase();
+	console.log(word)
+	interface.getDefinition(word);
+
 } else if(program.syn) {
-	console.log("syn");	
-	console.log(program.syn);
+	var word = 	program.syn.toLowerCase();
+	console.log(word)
+	interface.getSynonyms(word);
+
 } else if(program.play){
 	console.log("play");
 	console.log(program.play);	
+
 } else if(program.dict){
-	console.log("dict");
-	console.log(program.dict);	
+	var word = 	program.dict.toLowerCase();
+	console.log(word)
+	interface.getDefinition(word);
+	interface.getSynonyms(word);
+	interface.getAntonyms(word);
+	interface.getExamples(word);	
+
 } else if(program.ant){
-	console.log("ant");
-	console.log(program.ant);	
+	var word = 	program.ant.toLowerCase();
+	console.log(word)
+	interface.getAntonyms(word);
+	
+
 } else if(program.ex){
-	console.log("ex");
-	console.log(program.ex);	
+	var word = 	program.ex.toLowerCase();
+	console.log(word)
+	interface.getExamples(word);
+
 } else {
 	console.log("please enter a valid option, check help. --help or -h ");
+
 }
