@@ -3,6 +3,15 @@ var program = require('commander');
 var interface = require('./interface');
 var interface_wod = require('./interface_wod');
 
+
+getAll = function(word) {
+
+	interface.getDefinition(word);
+	interface.getSynonyms(word);
+	interface.getAntonyms(word);
+	interface.getExamples(word);
+}
+
 program
 	.usage('[Options]')
 	.option('', 'Display definitions, synonyms, \n\t\t\t\t antonyms & examples of word of the day\n')
@@ -17,16 +26,13 @@ program
 // convert words to lower case before sending them to core
 
 if(program.rawArgs.length==2) {
-// word of the day
+	// word of the day
 	interface_wod.getWordofTheDay();
-	
+
 } else if (program.rawArgs.length ==3) {
 	var word = 	program.args[0].toLowerCase();
-	console.log(word)
-	interface.getDefinition(word);
-	interface.getSynonyms(word);
-	interface.getAntonyms(word);
-	interface.getExamples(word);	
+	console.log(word);
+	getAll(word);
 
 } else if(program.def){
 	var word = 	program.def.toLowerCase();
@@ -45,10 +51,7 @@ if(program.rawArgs.length==2) {
 } else if(program.dict){
 	var word = 	program.dict.toLowerCase();
 	console.log(word)
-	interface.getDefinition(word);
-	interface.getSynonyms(word);
-	interface.getAntonyms(word);
-	interface.getExamples(word);	
+	getAll(word);	
 
 } else if(program.ant){
 	var word = 	program.ant.toLowerCase();
