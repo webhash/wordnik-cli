@@ -1,0 +1,28 @@
+{
+  "name": "wordnik-cli",
+  "version": "1.0.0",
+  "description": "node based cli to access wordnik",
+  "main": "dict.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webhash/wordnik-cli.git"
+  },
+  "keywords": [
+    "wordnik",
+    "node",
+    "cli",
+    "js"
+  ],
+  "author": "vaibhav sharma",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/webhash/wordnik-cli/issues"
+  },
+   "bin":{
+    "node dict" :"node dict.js"
+  },
+  "homepage": "https://github.com/webhash/wordnik-cli#readme"
+}
