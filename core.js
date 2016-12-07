@@ -6,7 +6,7 @@ var port = 80;
 var version = 4;
 
 var relationshipTypes = 'synonym';
-var limitPerRelationshipType = 10;
+
 var word = "test";
 var caseSensitive = true;
 var minCorpusCount = 5;
@@ -15,14 +15,29 @@ var minDictionaryCount = 1;
 var minLength = 1;
 var maxLength = -1;
 var skip = 0;
-var limit=10;
-
 var wordSearchURL = url + ':' + port + '/v' + version + '/words.json/search/' + word +  '?caseSensitive=' + caseSensitive + '&minCorpusCount=' + minCorpusCount + 
 	'&maxCorpusCount=' +  maxCorpusCount + '&minDictionaryCount=' + minDictionaryCount + '&minLength=' + minLength + "&maxLength=" + maxLength + '&skip=' +  skip + '&limit=' + limit + '&&api_key=' + api_key
-	
 
-request(wordSearchURL, (error, response, body)=> {
-	console.log(wordSearchURL);
+
+
+var limit=10;
+var includeRelated = false;
+var wordDefURL = url + ':' + port + '/v' + version + '/word.json/' + word + '/definitions?limit=' + limit + '&includeRelated=' + includeRelated + '&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=' + api_key
+	
+var limitPerRelationshipType = 10;
+var relationshipType = 'synonym';
+var wordRelationURL = url + ':' + port + '/v' + version + '/word.json/' + word + '/relatedWords?useCanonical=false&relationshipTypes=' + relationshipType + '&limitPerRelationshipType=' + limitPerRelationshipType + '&api_key=' + api_key
+
+
+var wordExampleURL = url + ':' + port + '/v' + version + '/word.json/' + word + '/examples?includeDuplicates=false&useCanonical=false&skip=0&limit=' + limit + '&api_key=' + api_key
+
+var currentdate = new Date().toISOString().split(/T/)[0];
+var wordOfTheDayURL =  url + ':' + port + '/v' + version + '/words.json/wordOfTheDay?date=' + currentdate + '&api_key=' + api_key
+
+
+var URL = wordOfTheDayURL;
+request(URL, (error, response, body)=> {
+	console.log(URL);
 	if (!error && response.statusCode === 200) {
     	const wordnikResponse = JSON.parse(body)
     	console.log("Got a response: ", wordnikResponse)
