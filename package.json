@@ -21,8 +21,12 @@
   "bugs": {
     "url": "https://github.com/webhash/wordnik-cli/issues"
   },
-   "bin":{
-    "node dict" :"node dict.js"
+  "bin": {
+    "node dict": "node dict.js"
   },
-  "homepage": "https://github.com/webhash/wordnik-cli#readme"
+  "homepage": "https://github.com/webhash/wordnik-cli#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "request": "^2.79.0"
+  }
 }
