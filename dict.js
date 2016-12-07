@@ -29,6 +29,10 @@ if(program.rawArgs.length==2) {
 	// word of the day
 	interface_wod.getWordofTheDay();
 
+} else if(program.play) {
+	console.log("play");
+	console.log(program.play);	
+
 } else if (program.rawArgs.length ==3) {
 	var word = 	program.args[0].toLowerCase();
 	console.log(word);
@@ -43,10 +47,6 @@ if(program.rawArgs.length==2) {
 	var word = 	program.syn.toLowerCase();
 	console.log(word)
 	interface.getSynonyms(word);
-
-} else if(program.play){
-	console.log("play");
-	console.log(program.play);	
 
 } else if(program.dict){
 	var word = 	program.dict.toLowerCase();
