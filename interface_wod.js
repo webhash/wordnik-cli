@@ -20,3 +20,14 @@ exports.getWordofTheDay =  function(response) {
 		}
 	});
 }
+
+exports.getRandomWordData =  function(response) {
+	core.getRandomWord(function(response){
+		if (response) {
+			console.log("Random word is " + response.word);
+			getAll(response.word);
+		} else {
+			console.log('Nothing found');
+		}
+	});
+}

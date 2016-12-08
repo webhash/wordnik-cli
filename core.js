@@ -44,3 +44,9 @@ exports.getWordofDay = function (callback) {
 	var wordOfTheDayURL =  url + ':' + port + '/v' + version + '/words.json/wordOfTheDay?date=' + currentdate + '&api_key=' + api_key
 	getData(wordOfTheDayURL, function(response){return callback(response);});
 }
+
+
+exports.getRandomWord = function(callback) {
+	var wordRandomURL =  url + ':' + port + '/v' + version + '/words.json/randomWord?hasDictionaryDef=false&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&api_key=' + api_key
+	getData(wordRandomURL, function(response){return callback(response);});
+}

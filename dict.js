@@ -30,8 +30,8 @@ if(program.rawArgs.length==2) {
 	interface_wod.getWordofTheDay();
 
 } else if(program.play) {
-	console.log("play");
-	console.log(program.play);	
+	//random word 
+	interface_wod.getRandomWordData();
 
 } else if (program.rawArgs.length ==3) {
 	var word = 	program.args[0].toLowerCase();
