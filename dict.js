@@ -23,8 +23,8 @@ if(program.rawArgs.length==2) {
 	interface_wod.getWordofTheDay();
 
 } else if(program.play) {
-	//random word 
-	interface_play.getRandomWordData();
+	//playgame
+	interface_play.PlayGame();
 
 } else if (program.rawArgs.length ==3) {
 	var word = 	program.args[0].toLowerCase();

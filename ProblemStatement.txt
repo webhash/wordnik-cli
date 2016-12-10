@@ -60,15 +60,6 @@ OR Display another antonym of the word
 OR Display another synonym of the word
         -3 quit
             Display the word, its full dict, and quit
-Areas of Focus
-    - Code quality
-    - Code reuse
-    - Code structure
-    - Use of high level language features
-
-
-Git
-It is advised to use git, and push code to github. Commit frequently, and I would like to see how the code evolved by looking at your commits. Share the github repo of the code as soon it is setup.
 
 
 

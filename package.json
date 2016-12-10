@@ -28,6 +28,7 @@
   "dependencies": {
     "async": "^2.1.4",
     "commander": "^2.9.0",
+    "readline-sync": "^1.4.5",
     "request": "^2.79.0"
   }
 }
