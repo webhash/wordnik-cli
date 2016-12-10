@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/webhash/wordnik-cli#readme",
   "dependencies": {
+    "async": "^2.1.4",
     "commander": "^2.9.0",
     "request": "^2.79.0"
   }

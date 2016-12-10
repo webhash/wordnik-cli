@@ -2,8 +2,12 @@ var exports = module.exports = {};
 var core = require('./core');
 
 
-exports.getSynonyms =  function(word) {
-	core.getWordRelation(word,'synonym', function(response){
+exports.getSynonyms =  function(word, callback) {
+	core.getWordRelation(word,'synonym', function(err, response){
+		if (err) {
+			console.log(' Synonyms :  Error occured');
+			return;
+		}
 		if (response && response[0]) {
 			var list = response[0].words
 			for(i in list){
@@ -16,7 +20,11 @@ exports.getSynonyms =  function(word) {
 }
 
 exports.getAntonyms =  function(word) {
-	core.getWordRelation(word,'antonym', function(response){
+	core.getWordRelation(word,'antonym', function(err, response){
+		if (err) {
+			console.log(' Antonyms :  Error occured');
+			return;
+		}
 		if (response && response[0]) {
 			var list = response[0].words
 			for(i in list){
@@ -29,20 +37,28 @@ exports.getAntonyms =  function(word) {
 }
 
 exports.getDefinition = function (word) {
-	core.getWordDef(word, function(response) {
+	core.getWordDef(word, function(err, response) {
+		if (err) {
+			console.log(' Meaning :  Error occured');
+			return;
+		}
 		if (response) {
 			for (i in response){
 				console.log(' Meaning : ' + response[i].text);
 			}
 		} else {
 			console.log('Meaning : Nothing found');
-		}	
+		}
 
 	});
 }
 
 exports.getExamples = function(word) {
-	core.getWordExample(word, function(response) {
+	core.getWordExample(word, function(err, response) {
+		if (err) {
+			console.log(' Examples :  Error occured');
+			return;
+		}
 		if (response) {
 			var list = response.examples
 			for (i in list) {
