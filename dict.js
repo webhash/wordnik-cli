@@ -2,15 +2,8 @@
 var program = require('commander');
 var interface = require('./interface');
 var interface_wod = require('./interface_wod');
+var interface_play = require('./interface_play');
 
-
-getAll = function(word) {
-
-	interface.getDefinition(word);
-	interface.getSynonyms(word);
-	interface.getAntonyms(word);
-	interface.getExamples(word);
-}
 
 program
 	.usage('[Options]')
@@ -31,12 +24,15 @@ if(program.rawArgs.length==2) {
 
 } else if(program.play) {
 	//random word 
-	interface_wod.getRandomWordData();
+	interface_play.getRandomWordData();
 
 } else if (program.rawArgs.length ==3) {
 	var word = 	program.args[0].toLowerCase();
 	console.log(word);
-	getAll(word);
+	interface.getDefinition(word);
+	interface.getSynonyms(word);
+	interface.getAntonyms(word);
+	interface.getExamples(word);
 
 } else if(program.def){
 	var word = 	program.def.toLowerCase();
@@ -51,7 +47,10 @@ if(program.rawArgs.length==2) {
 } else if(program.dict){
 	var word = 	program.dict.toLowerCase();
 	console.log(word)
-	getAll(word);	
+	interface.getDefinition(word);
+	interface.getSynonyms(word);
+	interface.getAntonyms(word);
+	interface.getExamples(word);	
 
 } else if(program.ant){
 	var word = 	program.ant.toLowerCase();
